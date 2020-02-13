@@ -2,9 +2,15 @@
 // feel free to change this component.js into TodoList.js
 import React from 'react';
 
-function TodoList (props) {
+const TodoList = props => {
   return (
-    <div>list</div>
+      <div>
+        {props.tasklist.map(task => {
+          return (
+              <p key={task.id}>{task.task}</p>
+          )
+        })}
+      </div>
   )
 }
 

@@ -8,14 +8,14 @@ class App extends React.Component {
   constructor() {
     super( );
     this.state = {
-      taskList: [{task: 'write code', id: 1, completed: false}],
+      list: [{task: 'write code', id: 1, completed: false}],
     }
   }
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList tasklist={this.state.taskList}>
+        <TodoList tasklist={this.state.list}>
 
         </TodoList>
       </div>
