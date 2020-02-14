@@ -15,25 +15,22 @@ class App extends React.Component {
     }
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    this.addTask(e, this.state.todo)
+  handleSubmit = (e) => {
+    this.addTask(e)
     this.setState({todo: ''})
-
   }
 
-  handleChange = e => {
+
+  handleChanges = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  addTask = (e, todo) => {
-    e.preventDefualt()
+  addTask = (e) => {
     const newTask = {
-      task: todo,
+      task: this.state.todo,
       id: Date.now(),
       completed: false
     }
-    console.log(newTask)
     this.setState({list: [...this.state.list, newTask]})
   }
 
@@ -42,7 +39,7 @@ class App extends React.Component {
         <div>
           <h2>Welcome to your Todo App!</h2>
           <TodoForm todo={this.state.todo} handleSumbit={this.handleSubmit}
-                    handleChange={this.handleChange}/>
+                    handleChanges={this.handleChanges}/>
           <TodoList tasklist={this.state.list}/>
         </div>
     )
