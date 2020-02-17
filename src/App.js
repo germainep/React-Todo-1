@@ -18,6 +18,7 @@ class App extends React.Component {
   handleSubmit = (e) => {
     this.addTask(e)
     this.setState({todo: ''})
+    this.addToLocalStorage()
   }
 
 
@@ -32,6 +33,7 @@ class App extends React.Component {
       completed: false
     }
     this.setState({list: [...this.state.list, newTask]})
+
   }
 
   render() {
