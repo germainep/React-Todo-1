@@ -3,7 +3,7 @@ import React from 'react'
 const Todo = (props) => {
   return (
       <div>
-        <span>{props.todo.task}</span>
+        <span onClick={() => props.toggleComplete(props.todo.id)}>{props.todo.task}</span>
       </div>
   )
 }

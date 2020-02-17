@@ -18,7 +18,7 @@ class App extends React.Component {
   handleSubmit = (e) => {
     this.addTask(e)
     this.setState({todo: ''})
-    this.addToLocalStorage()
+    // this.addToLocalStorage()
   }
 
 
@@ -36,13 +36,32 @@ class App extends React.Component {
 
   }
 
+  toggleComplete = (taskid) => {
+    this.setState({
+                    list: this.state.list.map(task => {
+                      if (taskid === task.id) {
+                        return {
+                          ...task,
+                          completed: !task.completed
+                        }
+                      }
+                      return task
+                    })
+                  })
+  }
+
+  clearCompleted = () => {
+    console.log(this.state.list)
+    this.setState({list: this.state.list.filter(task => task.completed === false)})
+  }
+
   render() {
     return (
         <div>
           <h2>Welcome to your Todo App!</h2>
           <TodoForm todo={this.state.todo} handleSumbit={this.handleSubmit}
-                    handleChanges={this.handleChanges}/>
-          <TodoList tasklist={this.state.list}/>
+                    handleChanges={this.handleChanges} clearComplete={this.clearCompleted}/>
+          <TodoList tasklist={this.state.list} toggleComplete={this.toggleComplete}/>
         </div>
     )
   }
